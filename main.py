@@ -5,6 +5,7 @@ from flask import Flask, render_template, request
 app = Flask(__name__, template_folder='templates')
 
 
+# implemented from script.py
 def pswdcheck(a):
     criterion = False
     strength = 0
@@ -36,15 +37,20 @@ def pswdcheck(a):
             return "Password accepted.\nPassword Strength: " + strength
 
 
+# /form directory
 @app.route('/form')
 def form():
     return render_template('form.html')
 
 
+# /data directory
 @app.route('/data/', methods=['POST', 'GET'])
 def data():
+    # someone might access it directly with a GET request
     if request.method == 'GET':
-        return f"The URL /data is accessed directly. Try going to '/form' to submit form"
+        return f"Trying to test my website eh? It's foolproof"
+
+    # receiving POST request from form.html
     if request.method == 'POST':
         form_data = request.form
 
@@ -55,5 +61,6 @@ def data():
 
 
 if __name__ == "__main__":
+    # Tries to retrieve the port from Heroku
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)

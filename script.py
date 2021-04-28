@@ -1,3 +1,5 @@
+# This is the actual script that can be ran using 'python script.py'
+
 criterion = False
 strength = 0
 
