@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, render_template, request
 
 app = Flask(__name__, template_folder='templates')
@@ -50,3 +52,8 @@ def data():
             a = value
             result = pswdcheck(a)
             return render_template('data.html', result=result)
+
+
+if __name__ == "__main__":
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
