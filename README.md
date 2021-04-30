@@ -1,1 +1,1 @@
-http://xsqne.tk/project
+http://xsqne.cf/project
