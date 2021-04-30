@@ -2,6 +2,7 @@
 
 criterion = False
 strength = 0
+special_characters = "\"\'!@ #$%^&*()-+?_=,<>/"
 
 while not criterion:
     a = input("---------------------------------------\nEnter your password: ")
@@ -26,20 +27,19 @@ while not criterion:
                 strength += 1
                 break
 
-        # Check if there are any special characters
-        for item in pswd:
-            if item.isalnum():
-                strength += 1
-                break
+            # Check if there are any special characters
+            for item in pswd:
+                if item in special_characters:
+                    strength += 1
+                    break
 
-        if strength == 0:
-            strength = "Weak"
-        elif strength == 1:
-            strength = "Medium"
-        elif strength == 2:
-            strength = "Strong"
-        elif strength == 3:
-            strength = "OVERPOWERED"
+            if strength == 0:
+                strength = "Weak"
+            elif strength == 1:
+                strength = "Medium"
+            elif strength == 2:
+                strength = "Strong"
+            elif strength == 3:
+                strength = "OVERPOWERED"
 
-        print("Password accepted.\nPassword Strength:", strength)
-        strength = 0
+            print("Password accepted.\nPassword Strength: " + str(strength))

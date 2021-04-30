@@ -7,45 +7,43 @@ app = Flask(__name__, template_folder='templates')
 
 # implemented from script.py
 def pswdcheck(a):
-    criterion = False
+    special_characters = "\"\'!@ #$%^&*()-+?_=,<>/"
     strength = 0
 
-    while not criterion:
-        # Convert input into list
-        pswd = [x for x in a]
+    # Convert input into list
+    pswd = [x for x in a]
 
-        # 6 < Password Length < 12
-        if len(pswd) < 6 or len(pswd) > 12:
-            return "The password must be at least 6 and no more than 12 characters long"
+    # 6 < Password Length < 12
+    if len(pswd) < 6 or len(pswd) > 12:
+        return "The password must be at least 6 and no more than 12 characters long"
 
-        else:
-            if a.islower() or a.isupper():
-                pass
-            else:
-                strength += 1
+    if a.islower() or a.isupper():
+        pass
+    else:
+        strength += 1
 
-                # Checking if there are any numerals
-                for item in pswd:
-                    if item.isnumeric():
-                        strength += 1
-                        break
+    # Checking if there are any numerals
+    for item in pswd:
+        if item.isnumeric():
+            strength += 1
+            break
 
-                # Check if there are any special characters
-                for item in pswd:
-                    if item.isalnum():
-                        strength += 1
-                        break
+    # Check if there are any special characters
+    for item in pswd:
+        if item in special_characters:
+            strength += 1
+            break
 
-                if strength == 0:
-                    strength = "Weak"
-                elif strength == 1:
-                    strength = "Medium"
-                elif strength == 2:
-                    strength = "Strong"
-                elif strength == 3:
-                    strength = "OVERPOWERED"
+    if strength == 0:
+        strength = "Weak"
+    elif strength == 1:
+        strength = "Medium"
+    elif strength == 2:
+        strength = "Strong"
+    elif strength == 3:
+        strength = "OVERPOWERED"
 
-            return "Password accepted.\nPassword Strength: " + strength
+    return "Password accepted.\nPassword Strength: " + str(strength)
 
 
 # /form directory
