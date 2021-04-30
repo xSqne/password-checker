@@ -20,8 +20,15 @@ while not criterion:
         else:
             strength += 1
 
+        # Checking if there are any numerals
         for item in pswd:
             if item.isnumeric():
+                strength += 1
+                break
+
+        # Check if there are any special characters
+        for item in pswd:
+            if item.isalnum():
                 strength += 1
                 break
 
@@ -31,6 +38,8 @@ while not criterion:
             strength = "Medium"
         elif strength == 2:
             strength = "Strong"
+        elif strength == 3:
+            strength = "OVERPOWERED"
 
         print("Password accepted.\nPassword Strength:", strength)
         strength = 0
