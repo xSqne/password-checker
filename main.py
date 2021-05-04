@@ -1,22 +1,37 @@
 import os
-
 from flask import Flask, render_template, request
 
 app = Flask(__name__, template_folder='templates')
 
 
-# implemented from script.py
+# Function to check common passwords from file
+def checkfile(x):
+    # Password file forked from https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt
+    with open("10k-most-common.txt", 'r') as file:
+        for line in file:
+            if x in line:
+                return True
+
+    return False
+
+
+# forked from script.py
 def pswdcheck(a):
     special_characters = "\"\'!@ #$%^&*()-+?_=,<>/"
     strength = 0
 
-    # Convert input into list
+    # Check right away to reduce time
+    if checkfile(a):
+        return "Password found in common password database. Please change ASAP!"
+
+    # Convert string into list
     pswd = [x for x in a]
 
     # 6 < Password Length < 12
     if len(pswd) < 6 or len(pswd) > 12:
         return "The password must be at least 6 and no more than 12 characters long"
 
+    # Check if all lower or upper
     if a.islower() or a.isupper():
         pass
     else:
@@ -34,6 +49,7 @@ def pswdcheck(a):
             strength += 1
             break
 
+    # Assign values
     if strength == 0:
         strength = "Weak"
     elif strength == 1:
