@@ -1,4 +1,91 @@
-<form action="/data" method = "POST">
-    <p>Password <input type = "text" name = "Password" /></p>
-    <p><input type = "submit" value = "Submit" /></p>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+  form {text-align: center; padding: 70px 0; height: 40%; width 50%;
+  }
+  </style>
+
+
+  <meta charset="UTF-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <meta content="description" name="description">
+  <meta name="google" content="notranslate" />
+  <!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no">
+  <link href="/static/favicon.ico
+" rel="icon">
+
+  <link href="" rel="stylesheet">
+
+
+  <title>Password Checker</title>
+
+<link href="{{ url_for('static',filename='styles/style.css') }}" rel="stylesheet"></head>
+
+<body> <!-- Add your content of header -->
+<header>
+  <nav class="navbar navbar-default active">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" title="">
+          Password Checker
+        </a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="https://www.xsqne.cf/project.html" title="">Go Back</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <form action="/data" method = "POST">
+      <input type="text" placeholder="Password" name="password">
+      <input type="submit" value ="Check" class="btn btn-primary btn-sm" />
+  </form>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+</div>
+
+<footer class="footer-container white-text-container">
+  <div class="container">
+    <div class="row">
+        <div class="row">
+          <div class="col-xs-12 col-sm-7">
+            <p>Made by xSqne
+            </p>
+          </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.
+  addEventListener("DOMContentLoaded", function (event) {
+    navActivePage();
+    scrollRevelation('.reveal');
+  });
+</script>
+</body>
+</html>

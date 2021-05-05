@@ -63,13 +63,13 @@ def pswdcheck(a):
 
 
 # /form directory
-@app.route('/form')
+@app.route('/')
 def form():
     return render_template('form.html')
 
 
 # /data directory
-@app.route('/data/', methods=['POST', 'GET'])
+@app.route('/data', methods=['POST', 'GET'])
 def data():
     # someone might access it directly with a GET request
     if request.method == 'GET':
