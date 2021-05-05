@@ -62,7 +62,7 @@ def pswdcheck(a):
     return "Password accepted.\nPassword Strength: " + str(strength)
 
 
-# /form directory
+# / directory
 @app.route('/')
 def form():
     return render_template('form.html')
