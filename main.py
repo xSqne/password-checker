@@ -15,7 +15,6 @@ def checkfile(x):
     return False
 
 
-# From script.py
 def pswdcheck(a):
     special_characters = "\"\'!@ #$%^&*()-+?_=,<>/"
     strength = 0
