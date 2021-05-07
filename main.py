@@ -19,6 +19,7 @@ def checkfile(x):
 def pswdcheck(a):
     special_characters = "\"\'!@ #$%^&*()-+?_=,<>/"
     strength = 0
+    allnumber = True
 
     # Check right away to reduce time
     if checkfile(a):
@@ -31,17 +32,23 @@ def pswdcheck(a):
     if len(pswd) < 6 or len(pswd) > 12:
         return "The password must be at least 6 and no more than 12 characters long"
 
-    # Check if all lower or upper
-    if a.islower() or a.isupper():
-        pass
-    else:
-        strength += 1
-
-    # Checking if there are any numerals
-    for item in pswd:
-        if item.isnumeric():
+    # Check if all lower or upper or contains only numbers
+    if not(a.islower() or a.isupper()):
+        if not(a.isnumeric()):
             strength += 1
-            break
+
+    # Check if password is all numeral
+    if not(a.isnumeric()):
+        allnumber = False
+    elif a.isnumeric:
+        allnumber = True
+
+    if not allnumber:
+        # Checking if there are any numerals
+        for item in pswd:
+            if item.isnumeric():
+                strength += 1
+                break
 
     # Check if there are any special characters
     for item in pswd:
